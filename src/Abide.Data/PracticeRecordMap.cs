@@ -1,5 +1,5 @@
 ﻿#region Copyright (c) 2013 James Snape
-// <copyright file="SourceFile.cs" company="James Snape">
+// <copyright file="PracticeRecordMap.cs" company="James Snape">
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -20,44 +20,30 @@
 // </copyright>
 #endregion
 
-namespace Abide.Downloader
+namespace Abide.Data
 {
     using System;
-    using System.Net;
+    using CsvHelper.Configuration;
 
     /// <summary>
-    /// SourceFile class definition.
+    /// PracticeRecord mapping definition.
     /// </summary>
-    public class SourceFile
+    [CLSCompliant(false)]
+    public class PracticeRecordMap : CsvClassMap<PracticeRecord>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SourceFile"/> class.
+        /// Called to create the mappings.
         /// </summary>
-        /// <param name="uri">Source URL.</param>
-        /// <param name="description">Source description.</param>
-        public SourceFile(Uri uri, string description)
+        public override void CreateMap()
         {
-            this.Uri = uri;
-            this.Description = description;
-        }
-
-        /// <summary>
-        /// Gets the source URI.
-        /// </summary>
-        public Uri Uri { get; private set; }
-
-        /// <summary>
-        /// Gets the description.
-        /// </summary>
-        public string Description { get; private set; }
-
-        /// <summary>
-        /// Gets the file name.
-        /// </summary>
-        /// <remarks>The absolute path includes a leading slash.</remarks>
-        public string FileName
-        {
-            get { return WebUtility.UrlDecode(this.Uri.AbsolutePath.Substring(1)); }
+            Map(m => m.DateKey).Index(0);
+            Map(m => m.Code).Index(1);
+            Map(m => m.Name).Index(2);
+            Map(m => m.Group).Index(3);
+            Map(m => m.Street).Index(4);
+            Map(m => m.City).Index(5);
+            Map(m => m.County).Index(6);
+            Map(m => m.Postcode).Index(7);
         }
     }
 }

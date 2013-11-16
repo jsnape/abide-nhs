@@ -1,5 +1,5 @@
 ﻿#region Copyright (c) 2013 James Snape
-// <copyright file="SourceFile.cs" company="James Snape">
+// <copyright file="PracticeRecord.cs" company="James Snape">
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -20,44 +20,57 @@
 // </copyright>
 #endregion
 
-namespace Abide.Downloader
+namespace Abide.Data
 {
     using System;
-    using System.Net;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
-    /// SourceFile class definition.
+    /// PracticeRecord class definition.
     /// </summary>
-    public class SourceFile
+    public class PracticeRecord
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SourceFile"/> class.
+        /// Gets or sets the Date Key.
         /// </summary>
-        /// <param name="uri">Source URL.</param>
-        /// <param name="description">Source description.</param>
-        public SourceFile(Uri uri, string description)
-        {
-            this.Uri = uri;
-            this.Description = description;
-        }
+        public int DateKey { get; set; }
 
         /// <summary>
-        /// Gets the source URI.
+        /// Gets or sets the practice code.
         /// </summary>
-        public Uri Uri { get; private set; }
+        public string Code { get; set; }
 
         /// <summary>
-        /// Gets the description.
+        /// Gets or sets the practice name.
         /// </summary>
-        public string Description { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets the file name.
+        /// Gets or sets the medical group.
         /// </summary>
-        /// <remarks>The absolute path includes a leading slash.</remarks>
-        public string FileName
-        {
-            get { return WebUtility.UrlDecode(this.Uri.AbsolutePath.Substring(1)); }
-        }
+        public string Group { get; set; }
+
+        /// <summary>
+        /// Gets or sets the street.
+        /// </summary>
+        public string Street { get; set; }
+
+        /// <summary>
+        /// Gets or sets the city.
+        /// </summary>
+        public string City { get; set; }
+
+        /// <summary>
+        /// Gets or sets the county.
+        /// </summary>
+        public string County { get; set; }
+
+        /// <summary>
+        /// Gets or sets the postcode.
+        /// </summary>
+        public string Postcode { get; set; }
     }
 }

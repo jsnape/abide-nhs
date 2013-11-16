@@ -1,9 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abide.Downloader", "Abide.Downloader\Abide.Downloader.csproj", "{FA567C8F-5CCF-4C9E-9F6B-A48E52374885}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E27F3A34-39B8-46BD-807D-E66DD5C224E9}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{C73BA998-DDE1-4591-BE80-102979F7DF40}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\build.proj = ..\build\build.proj
+		..\build\run.proj = ..\build\run.proj
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abide.Data", "Abide.Data\Abide.Data.csproj", "{B247DB9B-3936-4169-994D-0E72516643A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abide.Data.Tests", "Abide.Data.Tests\Abide.Data.Tests.csproj", "{F3A3C50C-9DA5-4EA5-8069-6790B75535D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +28,14 @@ Global
 		{FA567C8F-5CCF-4C9E-9F6B-A48E52374885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA567C8F-5CCF-4C9E-9F6B-A48E52374885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA567C8F-5CCF-4C9E-9F6B-A48E52374885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B247DB9B-3936-4169-994D-0E72516643A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B247DB9B-3936-4169-994D-0E72516643A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B247DB9B-3936-4169-994D-0E72516643A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B247DB9B-3936-4169-994D-0E72516643A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A3C50C-9DA5-4EA5-8069-6790B75535D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A3C50C-9DA5-4EA5-8069-6790B75535D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A3C50C-9DA5-4EA5-8069-6790B75535D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A3C50C-9DA5-4EA5-8069-6790B75535D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

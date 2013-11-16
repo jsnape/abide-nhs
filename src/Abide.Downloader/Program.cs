@@ -37,7 +37,7 @@ namespace Abide.Downloader
     /// <summary>
     /// Main program entry point.
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         /// JSON metadata URL.
@@ -153,7 +153,7 @@ namespace Abide.Downloader
             var query = from d in json["resources"]
                         where d["format"].ToString() == "exe" && d["date"].ToString().Contains("2012")
                         select new SourceFile(
-                            d["url"].ToString(),
+                            new Uri(d["url"].ToString()),
                             d["description"].ToString().Trim());
 
             return query;

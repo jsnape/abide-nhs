@@ -1,5 +1,5 @@
 ﻿#region Copyright (c) 2013 James Snape
-// <copyright file="SourceFile.cs" company="James Snape">
+// <copyright file="PracticeRepositoryFacts.cs" company="James Snape">
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -20,44 +20,31 @@
 // </copyright>
 #endregion
 
-namespace Abide.Downloader
+namespace Abide.Data.Tests
 {
-    using System;
-    using System.Net;
-
+    using System.Linq;
+    using Xunit;
+    
     /// <summary>
-    /// SourceFile class definition.
+    /// PracticeRepository Facts
     /// </summary>
-    public class SourceFile
+    public static class PracticeRepositoryFacts
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SourceFile"/> class.
+        /// Data source path.
         /// </summary>
-        /// <param name="uri">Source URL.</param>
-        /// <param name="description">Source description.</param>
-        public SourceFile(Uri uri, string description)
+        private const string SourcePath = @"C:\Users\James\Desktop\nhs-data";
+
+        /// <summary>
+        /// Repository returns all the records.
+        /// </summary>
+        [Fact]
+        public static void RepositoryReturnsAllTheRecords()
         {
-            this.Uri = uri;
-            this.Description = description;
-        }
+            var repository = new PracticeRepository(SourcePath, "*REXT.CSV");
+            var recordCount = repository.List().Count();
 
-        /// <summary>
-        /// Gets the source URI.
-        /// </summary>
-        public Uri Uri { get; private set; }
-
-        /// <summary>
-        /// Gets the description.
-        /// </summary>
-        public string Description { get; private set; }
-
-        /// <summary>
-        /// Gets the file name.
-        /// </summary>
-        /// <remarks>The absolute path includes a leading slash.</remarks>
-        public string FileName
-        {
-            get { return WebUtility.UrlDecode(this.Uri.AbsolutePath.Substring(1)); }
+            Assert.True(recordCount > 10000);
         }
     }
 }
