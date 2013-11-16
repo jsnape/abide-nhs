@@ -88,7 +88,10 @@ namespace Abide.Data
 
                     while (csv.Read())
                     {
-                        yield return csv.GetRecord<PracticeRecord>();
+                        var record = csv.GetRecord<PracticeRecord>();
+                        record.Source = file;
+                        
+                        yield return record;
                     }
                 }
             }

@@ -22,6 +22,7 @@
 
 namespace Abide.Data.Tests
 {
+    using System.Collections.Generic;
     using System.Linq;
     using Xunit;
     
@@ -45,6 +46,49 @@ namespace Abide.Data.Tests
             var recordCount = repository.List().Count();
 
             Assert.True(recordCount > 10000);
+        }
+
+        /// <summary>
+        /// Practice records are type I even though they are stored in multiple files.
+        /// </summary>
+        [Fact]
+        public static void PracticeRecordsAreTypeI()
+        {
+            var practices = new Dictionary<string, PracticeRecord>();
+            var repository = new PracticeRepository(SourcePath, "*REXT.CSV");
+
+            int nonMatches = 0;
+
+            foreach (var practice in repository.List())
+            {
+                var key = practice.Code;
+
+                if (!practices.ContainsKey(key))
+                {
+                    practices[key] = practice;
+                }
+                else
+                {
+                    var other = practices[key];
+
+                    switch (other.Code)
+                    {
+                        case "A82028":
+                        case "B83017":
+                        case "B86047":
+                        case "C81633":
+                            break;
+                        default:
+                            if (!practice.Equals(other))
+                            {
+                                nonMatches++;
+                            }
+                            break;
+                    }
+                }
+            }
+
+            Assert.Equal(0, nonMatches);
         }
     }
 }
